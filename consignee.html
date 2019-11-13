@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="ecshop商城">
+  <meta name="Description" content="ecshop商城">
+  <title>Ecshop商城</title>
+ <!--引用外部样式-->
+ <link type="text/css" rel="stylesheet"  href="css/main.css">
+ <link type="text/css" rel="stylesheet"  href="css/web.css">
+ <style type="text/css">
+ *{margin:0px;padding:0px;}
+ body{background: #f2f2f2;}
+ #LgAndReg{width:1200px; height:600px; margin:30px auto; background:rgba(255,255,255,0.8); box-shadow:0px 0px 3px #666;}
+ #LgAndReg .LgRegCon {width:1100px; margin:50px auto 0px;}
+  #LgAndReg p.ti{line-height:50px;background:#ccc; text-indent:20px; font-size:25px;}
+  #LgAndReg .LgRegCon table{border-collapse:collapse; width:1100px;}
+ #LgAndReg .LgRegCon table tr td{height:40px; padding:10px 0px; border-bottom:1px solid #ddd;}
+ #LgAndReg .LgRegCon table tr td.ti{width:100px; font-size:14px; text-align:right;padding-right:20px;}
+#LgAndReg .LgRegCon table tr td input{width:250px; height:35px; border:1px solid #ddd;border-radius:3px;}
+#LgAndReg .LgRegCon table tr td input.bnt_blue_2{width:300px; height:35px; background:#ff6666;color:#fff; display:block; margin:10px auto; border:0px;}
+#LgAndReg .LgRegCon table tr td select{width:150px;height:30px;}
+ </style>
+ </head>
+ <body>
+
+<div id="TopMain">
+
+	<!--Top开始-->
+	<div id="Top">
+		<div class="banner"><a href="#"><img src="images/logo.png" /></a></div>
+		<!--search begin-->
+		<div class="search">
+			<form>
+				<input type="text"  class="txt"/>
+				<input type="submit" class="but"  value=""/>
+			</form>
+		</div>
+		<!--search end-->
+		<div class="user">
+			用户登录前状态
+			<font><span class="iconfont">&#xe60b;</span><a href="">登录</a></font>
+			<font><span class="iconfont">&#xe60e;</span><a href="">注册</a></font>
+			
+
+			<!--用户登录后状态-->
+			<!-- 您好！wlm123,欢迎你回来 <a href="" class="usertxt">用户中心</a>｜<a href="" class="usertxt">退出</a>
+
+			<font><span class="iconfont">&#xe646;</span><a href="">加入购车</a></font> -->
+		</div>
+	</div>
+	<!--Top结束-->
+</div>
+
+<!--网站导航开始  滚动到一定高，给他加上 class="gd"-->
+<div id="Logo" >
+	<ul>
+		<li class="first"><font class="iconfont">&#xe627;</font>全部商品分类</li>
+		
+		<li><a href="index.html" target="_blank">首页</a></li>
+		<li><a href="Product.html" target="_blank">节日礼物</a></li>
+		<li><a href="">生日礼物</a></li>
+		<li><a href="">蛋糕</a></li>
+		<li><a href="">商务礼物</a></li>
+		<li><a href="">个性定制</a></li>
+		<li><a href="">鲜花</a></li>
+		<li class="last"></li>
+	</ul>
+</div>
+<!--网站导航结束-->
+
+<script type="text/javascript">
+
+	  var username_not_null = "请您输入用户名。";
+	  var username_invalid = "您输入了一个无效的用户名。";
+	  var password_not_null = "请您输入密码。";
+	  var email_not_null = "请您输入电子邮件。";
+	  var email_invalid = "您输入的电子邮件不正确。";
+	  var password_not_same = "您输入的密码和确认密码不一致。";
+	  var password_lt_six = "密码不能小于6个字符。";
+        
+        
+        function checkLoginForm(frm) {
+          if (Utils.isEmpty(frm.elements['username'].value)) {
+            alert(username_not_null);
+            return false;
+          }
+
+          if (Utils.isEmpty(frm.elements['password'].value)) {
+            alert(password_not_null);
+            return false;
+          }
+
+          return true;
+        }
+
+        function checkSignupForm(frm) {
+          if (Utils.isEmpty(frm.elements['username'].value)) {
+            alert(username_not_null);
+            return false;
+          }
+
+          if (Utils.trim(frm.elements['username'].value).match(/^\s*$|^c:\\con\\con$|[%,\'\*\"\s\t\<\>\&\\]/))
+          {
+            alert(username_invalid);
+            return false;
+          }
+
+          if (Utils.isEmpty(frm.elements['email'].value)) {
+            alert(email_not_null);
+            return false;
+          }
+
+          if (!Utils.isEmail(frm.elements['email'].value)) {
+            alert(email_invalid);
+            return false;
+          }
+
+          if (Utils.isEmpty(frm.elements['password'].value)) {
+            alert(password_not_null);
+            return false;
+          }
+
+          if (frm.elements['password'].value.length < 6) {
+            alert(password_lt_six);
+            return false;
+          }
+
+          if (frm.elements['password'].value != frm.elements['confirm_password'].value) {
+            alert(password_not_same);
+            return false;
+          }
+          return true;
+        }
+        
+</script>
+
+
+
+        
+<!--收货信息填写开始-->
+<div id="LgAndReg">
+	<p class="ti">收货人信息</p>
+	
+	
+	<div class="LgRegCon">
+	
+		<table>
+			<tr><td class="ti">配送区域:</td><td colspan="3">
+				 <select name="country" id="selCountries_0" onChange="region.changed(this, 1, 'selProvinces_0')" style="border:1px solid #ccc;">
+        <option value="0">请选择国家</option>
+                <option value="1" selected>中国</option>
+              </select>
+      <select name="province" id="selProvinces_0" onChange="region.changed(this, 2, 'selCities_0')" style="border:1px solid #ccc;">
+        <option value="0">请选择省</option>
+                <option value="2" >北京</option>
+                <option value="3" >安徽</option>
+                <option value="4" >福建</option>
+                <option value="5" >甘肃</option>
+                <option value="6" >广东</option>
+                <option value="7" >广西</option>
+                <option value="8" >贵州</option>
+                <option value="9" >海南</option>
+                <option value="10" >河北</option>
+                <option value="11" >河南</option>
+                <option value="12" >黑龙江</option>
+                <option value="13" >湖北</option>
+                <option value="14" >湖南</option>
+                <option value="15" >吉林</option>
+                <option value="16" >江苏</option>
+                <option value="17" >江西</option>
+                <option value="18" >辽宁</option>
+                <option value="19" >内蒙古</option>
+                <option value="20" >宁夏</option>
+                <option value="21" >青海</option>
+                <option value="22" >山东</option>
+                <option value="23" >山西</option>
+                <option value="24" >陕西</option>
+                <option value="25" >上海</option>
+                <option value="26" >四川</option>
+                <option value="27" >天津</option>
+                <option value="28" >西藏</option>
+                <option value="29" >新疆</option>
+                <option value="30" >云南</option>
+                <option value="31" >浙江</option>
+                <option value="32" >重庆</option>
+                <option value="33" >香港</option>
+                <option value="34" >澳门</option>
+                <option value="35" >台湾</option>
+              </select>
+      <select name="city" id="selCities_0" onChange="region.changed(this, 3, 'selDistricts_0')" style="border:1px solid #ccc;">
+        <option value="0">请选择市</option>
+              </select>
+      <select name="district" id="selDistricts_0" style="display:none" style="border:1px solid #ccc;">
+        <option value="0">请选择区</option>
+              </select>
+			</td></tr>
+
+			<tr><td class="ti">收货人姓名:</td>
+				<td>
+				<input name="consignee" type="text" class="inputBg" id="consignee_0" value="" />
+				<label>（必填）</label>
+				</td>
+				<td class="ti">电子邮件地址:</td>
+				<td><input name="email" type="text" class="inputBg"  id="email_0" value="" /></td>
+			</tr>
+
+			<tr><td class="ti">详细地址:</td>
+				<td><input name="address" type="text" class="inputBg"  id="address_0" value="" />（必填）</td>
+				<td class="ti">邮政编码:</td><td><input name="zipcode" type="text" class="inputBg"  id="zipcode_0" value="" />（必填）</td>
+			</tr>
+
+			<tr>
+				<td class="ti">电话:</td><td><input name="tel" type="text" class="inputBg"  id="tel_0" value="" />（必填）
+</td>
+				<td class="ti">手机</td><td><input name="mobile" type="text" class="inputBg"  id="mobile_0" value="" />（必填）</td>
+			</tr>
+			<tr><td class="ti">标志建筑:</td><td><input name="sign_building" type="text" class="inputBg"  id="sign_building_0" value="" /></td>
+			<td class="ti">最佳送货时间:</td><td><input name="best_time" type="text"  class="inputBg" id="best_time_0" value="" /></td></tr>
+
+			<tr>
+				<td colspan="4">
+				<input type="submit" name="Submit" class="bnt_blue_2" value="配送至这个地址" />
+				<input type="hidden" name="step" value="consignee" />
+				<input type="hidden" name="act" value="checkout" />
+				<input name="address_id" type="hidden" value="" />
+				</td>
+			</tr>
+
+		</table>
+	</div>
+	
+</div>
+
+<!--收货信息填写-->
+
+
+
+
+<!--网站底部开始-->
+<img src="images/f.jpg"  class="fbg"/>
+<div id="Footer2">
+	<dl class="first">
+		<dt><a href="#">关于我们</a></dt>
+		<dd><a href="#">诚聘英才</a></dd>
+		<dd><a href="#">品牌入驻</a></dd>
+		<dd><a href="#">友情链接</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#">关于我们</a></dt>
+		<dd><a href="#">诚聘英才</a></dd>
+		<dd><a href="#">品牌入驻</a></dd>
+		<dd><a href="#">友情链接</a></dd>
+	</dl>
+	<dl>
+		<dt>关于我们</dt>
+		<dd>诚聘英才</dd>
+		<dd>品牌入驻</dd>
+		<dd>友情链接</dd>
+	</dl>
+	<dl>
+		<dt>关于我们</dt>
+		<dd>诚聘英才</dd>
+		<dd>品牌入驻</dd>
+		<dd>友情链接</dd>
+	</dl>
+	<dl>
+		<dt>关于我们</dt>
+		<dd>诚聘英才</dd>
+		<dd>品牌入驻</dd>
+		<dd>友情链接</dd>
+	</dl>
+	<dl>
+		<dt>关于我们</dt>
+		<dd>诚聘英才</dd>
+		<dd>品牌入驻</dd>
+		<dd>友情链接</dd>
+	</dl>
+	<dl class="last">
+		<dt>客服在线</dt>
+		<dd>0000-000-000</dd>
+		<dd><a><img src="images/QQ.jpg" /></a></dd>
+	</dl>
+
+	<div style="clear:both"></div>
+</div>
+
+<p class="Copy">Copyright © 2013-2015  All Rights Reserved 版权所有：***** 备案号：备00000000号</p>
+<!--网站底部结束-->
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+	$("p.ti span").mouseover(function(){
+		$(this).addClass("active").siblings().removeClass("active");
+		$(".LgRegCon div").eq($(this).index()).show().siblings().hide();
+	});
+</script>
+</body>
+</html>

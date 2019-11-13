@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+ <head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="ecshop商城">
+	<meta name="Description" content="ecshop商城">
+	<title>Ecshop商城</title>
+ <!--引用外部样式-->
+ <link type="text/css" rel="stylesheet"  href="css/main.css">
+ <link type="text/css" rel="stylesheet"  href="css/web.css">
+ <style type="text/css">
+ *{margin:0px;padding:0px;}
+ body{background: #f2f2f2;}
+ #LgAndReg{width:1000px; height:600px; margin:30px auto; background:rgba(255,255,255,0.8); box-shadow:0px 0px 10px #666;}
+ #LgAndReg p.ti{height:45px;line-height:45px; font-size:18px; color:#666;
+					width:800px; margin:0px auto 0px; padding-top:50px;}
+ #LgAndReg p.ti span{border-bottom:1px solid #ddd;width:50%;display:block;float:left;
+				text-align:center;}
+ #LgAndReg p span.active{border-bottom:2px solid #50a8d8;}
+
+
+ #LgAndReg .LgRegCon {width:600px; margin:50px auto 0px;}
+ #LgAndReg .LgRegCon p{margin:10px 0px; font-size:14px; color:#666; }
+ #LgAndReg .LgRegCon p span{display:inline-block;width:100px;text-align:right;}
+ #LgAndReg .LgRegCon input.inputBg{width:300px; height:40px; border:1px solid #ddd;border-radius:3px;}
+ #LgAndReg .LgRegCon p label{font-size:12px;}
+ #LgAndReg .LgRegCon p.ck{padding-left:60px;}
+ #LgAndReg .LgRegCon p{line-height:45px;}
+ #LgAndReg .LgRegCon p.txt a{margin-left:60px; color:#36A2DC;}
+ #LgAndReg .LgRegCon p.txt a:hover{text-decoration:underline;}
+ #LgAndReg p.but input{width:150px;height:35px; background:#ff6699;color:#fff; text-align:center;
+				border-radius:3px; margin-left:50px;}
+ #LgAndReg p.but input.bnt_blue_2{background:#ff9900;}
+
+ #LgAndReg .LgRegCon .Lg{}
+#LgAndReg .LgRegCon .Reg{display:none;}
+ #LgAndReg .LgRegCon p.but2{padding-left:60px;}
+ </style>
+ </head>
+ <body>
+
+<div id="TopMain">
+
+	<!--Top开始-->
+	<div id="Top">
+		<div class="banner"><a href="#"><img src="images/logo.png" /></a></div>
+		<!--search begin-->
+		<div class="search">
+			<form>
+				<input type="text"  class="txt"/>
+				<input type="submit" class="but"  value=""/>
+			</form>
+		</div>
+		<!--search end-->
+		<div class="user">
+			<!--用户登录前状态
+			<font><span class="iconfont">&#xe60b;</span><a href="">登录</a></font>
+			<font><span class="iconfont">&#xe60e;</span><a href="">注册</a></font>-->
+			
+
+			<!--用户登录后状态-->
+			您好！wlm123,欢迎你回来 <a href="" class="usertxt">用户中心</a>｜<a href="" class="usertxt">退出</a>
+
+			<font><span class="iconfont">&#xe646;</span><a href="">加入购车</a></font>
+		</div>
+	</div>
+	<!--Top结束-->
+</div>
+
+<div id="Logo" >
+	<ul>
+		<li class="first"><font class="iconfont">&#xe627;</font>全部商品分类</li>
+		<li class="nav"><a href="">首页</a></li>
+		<li class="nav"><a href="">节日礼物</a></li>
+		<li class="nav"><a href="">生日礼物</a></li>
+		<li class="nav"><a href="">蛋糕</a></li>
+		<li class="nav"><a href="">商物礼物</a></li>
+		<li class="nav"><a href="">个性定制</a></li>
+		<li class="nav"><a href="">鲜花</a></li>
+		<li class="last"></li>
+	</ul>
+</div>
+<!--网站导航结束-->
+
+<script type="text/javascript">
+
+	  var username_not_null = "请您输入用户名。";
+	  var username_invalid = "您输入了一个无效的用户名。";
+	  var password_not_null = "请您输入密码。";
+	  var email_not_null = "请您输入电子邮件。";
+	  var email_invalid = "您输入的电子邮件不正确。";
+	  var password_not_same = "您输入的密码和确认密码不一致。";
+	  var password_lt_six = "密码不能小于6个字符。";
+        
+        
+        function checkLoginForm(frm) {
+          if (Utils.isEmpty(frm.elements['username'].value)) {
+            alert(username_not_null);
+            return false;
+          }
+
+          if (Utils.isEmpty(frm.elements['password'].value)) {
+            alert(password_not_null);
+            return false;
+          }
+
+          return true;
+        }
+
+        function checkSignupForm(frm) {
+          if (Utils.isEmpty(frm.elements['username'].value)) {
+            alert(username_not_null);
+            return false;
+          }
+
+          if (Utils.trim(frm.elements['username'].value).match(/^\s*$|^c:\\con\\con$|[%,\'\*\"\s\t\<\>\&\\]/))
+          {
+            alert(username_invalid);
+            return false;
+          }
+
+          if (Utils.isEmpty(frm.elements['email'].value)) {
+            alert(email_not_null);
+            return false;
+          }
+
+          if (!Utils.isEmail(frm.elements['email'].value)) {
+            alert(email_invalid);
+            return false;
+          }
+
+          if (Utils.isEmpty(frm.elements['password'].value)) {
+            alert(password_not_null);
+            return false;
+          }
+
+          if (frm.elements['password'].value.length < 6) {
+            alert(password_lt_six);
+            return false;
+          }
+
+          if (frm.elements['password'].value != frm.elements['confirm_password'].value) {
+            alert(password_not_same);
+            return false;
+          }
+          return true;
+        }
+        
+</script>
+        
+<!--登录注册页开始-->
+<div id="LgAndReg">
+	<p class="ti"><span class="active">用户登录</span><span>用户注册</span></p>
+	
+	
+	<div class="LgRegCon">
+
+		<!--用户登录开始-->
+		<div class="Lg">
+		<form action="flow.php?step=login" method="post" name="loginForm" id="loginForm" onsubmit="return checkLoginForm(this)">
+
+			<p>用户名：<input name="username" type="text" class="inputBg" id="username" />
+					   <label>请输入正确的账号</label>
+			</p>
+
+			<p>密　码：<input name="password" class="inputBg" type="password" />
+					   <label>请输入正确的账号</label>
+			</p>
+
+			<p class="ck">	<input type="checkbox" value="1" name="remember" id="remember" />
+				<label for="remember">请保存我这次的登录信息。</label>
+			</p>
+
+			<p class="but">
+
+				<input type="submit" class="bnt_blue" name="login" value="登录" />
+                <input type="button" class="bnt_blue_2" value="直接购买" onclick="location.href='flow.php?step=consignee&amp;direct_shopping=1'" />
+                <input name="act" type="hidden" value="signin" />
+
+			</p>
+			<p class="txt"> <a href="user.php?act=qpassword_name" class="f6">密码问题找回密码</a>
+			    <a href="user.php?act=get_password" class="f6">注册邮件找回密码</a>
+			</p>
+		</form>
+		</div>
+		<!--用户登录结束-->
+
+
+		<!--用户注册开始-->
+		<div class="Reg">
+			<p>	<span>用户名:</span>
+				<input name="username" type="text" class="inputBg" id="username" />
+				<label>用户名长度不能少于 3 个字符</label>
+			</p>
+			<p>	<span>电子邮件地址：</span>
+				<input name="username" type="text" class="inputBg" id="useremail" />
+				<label>请输入正确邮件地址</label>
+			</p>
+			<p>	<span>密码:</span>
+				<input name="username" type="text" class="inputBg" id="userpwd" />
+				<label>登录密码不能少于 6 个字符</label>
+			</p>
+			<p>	<span>确认密码：</span>
+				<input name="username" type="text" class="inputBg" id="userpwd" />
+				<label>登录密码不能少于 6 个字符</label>
+			</p>
+
+			<p class="but but2">
+                <input type="submit" name="Submit" class="bnt_blue_1" value="注册新用户" />
+                <input name="act" type="hidden" value="signup" />
+
+
+			</p>
+		</div>
+		<!--用户注册结束-->
+
+	</div>
+	
+</div>
+
+
+
+
+
+
+<!--网站底部开始-->
+<img src="images/f.jpg"  class="fbg"/>
+<div id="Footer2">
+	<dl class="first">
+		<dt><a href="#">关于我们</a></dt>
+		<dd><a href="#">诚聘英才</a></dd>
+		<dd><a href="#">品牌入驻</a></dd>
+		<dd><a href="#">友情链接</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="#">关于我们</a></dt>
+		<dd><a href="#">诚聘英才</a></dd>
+		<dd><a href="#">品牌入驻</a></dd>
+		<dd><a href="#">友情链接</a></dd>
+	</dl>
+	<dl>
+		<dt>关于我们</dt>
+		<dd>诚聘英才</dd>
+		<dd>品牌入驻</dd>
+		<dd>友情链接</dd>
+	</dl>
+	<dl>
+		<dt>关于我们</dt>
+		<dd>诚聘英才</dd>
+		<dd>品牌入驻</dd>
+		<dd>友情链接</dd>
+	</dl>
+	<dl>
+		<dt>关于我们</dt>
+		<dd>诚聘英才</dd>
+		<dd>品牌入驻</dd>
+		<dd>友情链接</dd>
+	</dl>
+	<dl>
+		<dt>关于我们</dt>
+		<dd>诚聘英才</dd>
+		<dd>品牌入驻</dd>
+		<dd>友情链接</dd>
+	</dl>
+	<dl class="last">
+		<dt>客服在线</dt>
+		<dd>0000-000-000</dd>
+		<dd><img src="images/QQ.jpg" /></dd>
+	</dl>
+
+	<div style="clear:both"></div>
+</div>
+
+<p class="Copy">Copyright © 2013-2015  All Rights Reserved 版权所有：***** 备案号：备00000000号</p>
+<!--网站底部结束-->
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+	$("p.ti span").mouseover(function(){
+		$(this).addClass("active").siblings().removeClass("active");
+		$(".LgRegCon div").eq($(this).index()).show().siblings().hide();
+	});
+</script>
+</body>
+</html>
